@@ -19,7 +19,7 @@ This is my first personal project built using `Vite`, and it's the beginning of 
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/) *(optional, if you use it)*
+- [Tailwind CSS](https://tailwindcss.com/)
 - [GitHub](https://github.com/Manpreet113/BrainDump)
 
 ## 🚀 Getting Started
