@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 function TaskTracker() {
   const [tasks, setTasks] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
   const [newTask, setNewTask] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState("");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -19,6 +21,23 @@ function TaskTracker() {
     setTasks(tasks.map((task) =>
       task.id === id ? { ...task, done: !task.done } : task
     ));
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const startEdit = (id, text) => {
+    setEditId(id);
+    setEditText(text);
+  };
+
+  const saveEdit = (id) => {
+    setTasks(tasks.map((task) =>
+      task.id === id ? { ...task, text: editText } : task
+    ));
+    setEditId(null);
+    setEditText("");
   };
 
   return (
@@ -45,17 +64,52 @@ function TaskTracker() {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="flex items-center p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
+            className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
           >
-            <input
-              type="checkbox"
-              checked={task.done}
-              onChange={() => toggleTask(task.id)}
-              className="mr-2 h-4 w-4 text-blue-500 rounded"
-            />
-            <span className={task.done ? "line-through text-gray-500 dark:text-gray-400" : ""}>
-              {task.text}
-            </span>
+            {editId === task.id ? (
+              <div className="flex-1 flex gap-2">
+                <input
+                  type="text"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  className="flex-1 p-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                />
+                <button
+                  onClick={() => saveEdit(task.id)}
+                  className="px-2 py-1 bg-purple-600 text-white rounded hover:bg-purple-700"
+                >
+                  Save
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center flex-1">
+                  <input
+                    type="checkbox"
+                    checked={task.done}
+                    onChange={() => toggleTask(task.id)}
+                    className="mr-2 h-4 w-4 text-purple-600 rounded"
+                  />
+                  <span className={task.done ? "line-through text-gray-500 dark:text-gray-400" : ""}>
+                    {task.text}
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => startEdit(task.id, task.text)}
+                    className="px-2 py-1 bg-purple-600 text-white rounded hover:bg-purple-700"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteTask(task.id)}
+                    className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </>
+            )}
           </li>
         ))}
       </ul>

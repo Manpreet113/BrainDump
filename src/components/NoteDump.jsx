@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 function NoteDump() {
   const [notes, setNotes] = useState(() => JSON.parse(localStorage.getItem("notes")) || []);
   const [newNote, setNewNote] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState("");
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -13,6 +15,23 @@ function NoteDump() {
       setNotes([...notes, { id: Date.now(), text: newNote }]);
       setNewNote("");
     }
+  };
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
+
+  const startEdit = (id, text) => {
+    setEditId(id);
+    setEditText(text);
+  };
+
+  const saveEdit = (id) => {
+    setNotes(notes.map((note) =>
+      note.id === id ? { ...note, text: editText } : note
+    ));
+    setEditId(null);
+    setEditText("");
   };
 
   return (
@@ -39,9 +58,42 @@ function NoteDump() {
         {notes.map((note) => (
           <li
             key={note.id}
-            className="p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
+            className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
           >
-            {note.text}
+            {editId === note.id ? (
+              <div className="flex-1 flex gap-2">
+                <input
+                  type="text"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  className="flex-1 p-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                />
+                <button
+                  onClick={() => saveEdit(note.id)}
+                  className="px-2 py-1 bg-purple-600 text-white rounded hover:bg-purple-700"
+                >
+                  Save
+                </button>
+              </div>
+            ) : (
+              <>
+                <span className="flex-1">{note.text}</span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => startEdit(note.id, note.text)}
+                    className="px-2 py-1 bg-purple-600 text-white rounded hover:bg-purple-700"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteNote(note.id)}
+                    className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </>
+            )}
           </li>
         ))}
       </ul>
