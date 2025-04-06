@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useAppContext } from "../context/AppContext";
 
 function TaskTracker() {
-  const [tasks, setTasks] = useState(() => JSON.parse(localStorage.getItem("tasks")) || []);
+  const { tasks, setTasks } = useAppContext();
   const [newTask, setNewTask] = useState("");
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
@@ -55,7 +56,7 @@ function TaskTracker() {
         />
         <button
           onClick={addTask}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+          className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition-colors"
         >
           Add
         </button>
@@ -64,7 +65,7 @@ function TaskTracker() {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
+            className="animate-item flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
           >
             {editId === task.id ? (
               <div className="flex-1 flex gap-2">

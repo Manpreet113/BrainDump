@@ -14,13 +14,13 @@ function App() {
           <h1 className="text-xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-secondary)' }}>BrainDump</h1>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
+            className="p-2 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
           >
             {darkMode ? "☀️" : "🌙"}
           </button>
         </div>
       </header>
-      <main className="max-w-3xl mx-auto p-6 space-y-8">
+      <main className="max-w-3xl mx-auto p-6 space-y-10">
         <p className="text-center text-lg text-gray-600 dark:text-gray-400">
           Declutter your mind, one dump at a time.
         </p>
