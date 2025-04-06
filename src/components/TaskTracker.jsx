@@ -51,7 +51,7 @@ function TaskTracker() {
           type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-3xl dark:backdrop-blur-lg  dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Add a task..."
         />
         <button

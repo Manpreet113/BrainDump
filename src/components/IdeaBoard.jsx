@@ -45,7 +45,7 @@ function IdeaBoard() {
           type="text"
           value={newIdea}
           onChange={(e) => setNewIdea(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-lg dark:backdrop-blur-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Capture an idea..."
         />
         <button
@@ -59,7 +59,7 @@ function IdeaBoard() {
         {ideas.map((idea) => (
           <li
             key={idea.id}
-            className="animate-item flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
+            className="animate-item flex items-center justify-between p-2 bg-gray-700 dark:backdrop-blur-ls border border-gray-200 dark:border-gray-700 rounded"
           >
             {editId === idea.id ? (
               <div className="flex-1 flex gap-2">
@@ -67,7 +67,7 @@ function IdeaBoard() {
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
-                  className="flex-1 p-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="flex-1 p-1 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-lg dark:backdrop-blur-lg text-gray-900 dark:text-white"
                 />
                 <button
                   onClick={() => saveEdit(idea.id)}
