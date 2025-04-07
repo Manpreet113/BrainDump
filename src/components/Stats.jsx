@@ -11,7 +11,7 @@ function Stats() {
 
   return (
     <section className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-      <h2 className="text-xl font-semibold mb-3 flex items-center gap-2">📊 Stats</h2>
+      <h2 className="text-xl font-semibold mb-3 flex items-center gap-2"><i className="ri-bar-chart-line"></i> Stats</h2>
       <div className="grid grid-cols-2 gap-3">
         <div className="p-3 backdrop-blur-lg dark:backdrop-blur-lg rounded border border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-600 dark:text-gray-400">Notes</p>

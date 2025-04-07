@@ -29,9 +29,9 @@ function App() {
               className="p-2 rounded-full hover:bg-purple-600 dark:hover:bg-purple-600 transition-colors"
             >
               {darkMode ? (
-                <i class="ri-sun-line"></i>
+                <i className="ri-sun-line"></i>
               ) : (
-                <i class="ri-moon-line"></i>
+                <i className="ri-moon-line"></i>
               )}
             </button>
             <button
@@ -43,9 +43,9 @@ function App() {
           </div>
         </div>
       </header>
-      <main className="max-w-3xl mx-auto p-6 pt-30 space-y-10">
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold">
+      <main className="max-w-3xl mx-auto p-6 pt-35 space-y-16">
+        <div className="text-center space-y-5">
+          <h2 className="text-6xl font-bold">
             Declutter your mind, one dump at a time.
           </h2>
           <p className="text-lg text-gray-400">
@@ -61,19 +61,78 @@ function App() {
             Start Organizing Now
           </a>
         </div>
-        <div id="app" className="space-y-8">
+
+
+        <div className="space-y-8">
           <h3 className="text-2xl font-semibold text-center">Core Features</h3>
-
-          <NoteDump />
-          <TaskTracker />
-          <IdeaBoard />
-
-          <Stats />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Note Dump Card */}
+            <div className="card bg-gray-800  p-6 rounded-lg shadow-md">
+              <h4 className="text-xl font-semibold mb-2 flex items-center gap-2">
+                <i className="ri-file-text-line text-purple-600"></i> Note Dump
+              </h4>
+              <ul className="text-gray-400 space-y-1">
+                <li><i className="ri-check-line text-green-500"></i> Simple text notes</li>
+                <li><i className="ri-check-line text-green-500"></i> Quick capture</li>
+                <li><i className="ri-check-line text-green-500"></i> Local storage</li>
+              </ul>
+            </div>
+            {/* Task Tracker Card */}
+            <div className="card bg-gray-800  p-6 rounded-lg shadow-md">
+              <h4 className="text-xl font-semibold mb-2 flex items-center gap-2">
+                <i className="ri-checkbox-line text-purple-600"></i> Task Tracker
+              </h4>
+              <ul className="text-gray-400 space-y-1">
+                <li><i className="ri-check-line text-green-500"></i> Complete task tracking</li>
+                <li><i className="ri-check-line text-green-500"></i> Mark tasks as complete</li>
+                <li><i className="ri-check-line text-green-500"></i> Simple organization</li>
+              </ul>
+            </div>
+            {/* Idea Board Card */}
+            <div className="card bg-gray-800  p-6 rounded-lg shadow-md">
+              <h4 className="text-xl font-semibold mb-2 flex items-center gap-2">
+                <i className="ri-lightbulb-line text-purple-600"></i> Idea Board
+              </h4>
+              <ul className="text-gray-400 space-y-1">
+                <li><i className="ri-check-line text-green-500"></i> Capture inspiration</li>
+                <li><i className="ri-check-line text-green-500"></i> Organize thoughts</li>
+                <li><i className="ri-check-line text-green-500"></i> Develop concepts</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <section id="note-dump" className="space-y-4">
+          <h3 className="text-2xl font-semibold flex items-center gap-2">
+            <i className="ri-file-text-line text-purple-600"></i> Note Dump
+          </h3>
+          <NoteDump />
+        </section>
+
+        <section id="task-tracker" className="space-y-4">
+          <h3 className="text-2xl font-semibold flex items-center gap-2">
+            <i className="ri-checkbox-line text-purple-600"></i> Task Tracker
+          </h3>
+          <TaskTracker />
+        </section>
+
+        <section id="idea-board" className="space-y-4">
+          <h3 className="text-2xl font-semibold flex items-center gap-2">
+            <i className="ri-lightbulb-line text-purple-600"></i> Idea Board
+          </h3>
+          <IdeaBoard />
+        </section>
+
+        {/* Stats Section */}
+        <section id="stats" className="space-y-4">
+          <h3 className="text-2xl font-semibold flex items-center gap-2">
+            <i className="ri-bar-chart-line text-purple-600"></i> Stats
+          </h3>
+          <Stats />
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 p-6 text-center text-gray-500">
+      <footer className="mt-12 border-t border-gray-600 p-6 text-center text-gray-500">
         <p>Built with React, rage, and a rapidly declining will to live.</p>
         <p>Don’t ask how it works. I don’t know. I blacked out.</p>
         <p>Code so scuffed, even AI refused to explain it.</p>

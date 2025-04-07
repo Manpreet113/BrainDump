@@ -44,7 +44,7 @@ function TaskTracker() {
   return (
     <section className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
       <h2 className="text-xl font-semibold mb-3 flex items-center gap-2">
-        ✅ Task Tracker
+        <i className="ri-checkbox-line"></i> Task Tracker
       </h2>
       <div className="flex gap-2">
         <input
