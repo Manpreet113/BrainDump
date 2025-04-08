@@ -45,7 +45,7 @@ function NoteDump() {
           type="text"
           value={newNote}
           onChange={(e) => setNewNote(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-lg dark:backdrop-blur-lg text-white dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-md bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Dump your thoughts..."
         />
         <button
@@ -59,7 +59,7 @@ function NoteDump() {
         {notes.map((note) => (
           <li
             key={note.id}
-            className="animate-item flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded"
+            className="animate-item flex items-center justify-between p-2 bg-gray-600 text-white border border-gray-200 dark:border-gray-700 rounded"
           >
             {editId === note.id ? (
               <div className="flex-1 flex gap-2">

@@ -51,7 +51,7 @@ function TaskTracker() {
           type="text"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-3xl dark:backdrop-blur-lg  dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded backdrop-blur-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Add a task..."
         />
         <button
@@ -65,7 +65,7 @@ function TaskTracker() {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="animate-item flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded"
+            className="animate-item flex items-center justify-between p-2 bg-gray-600 border text-white border-gray-200 dark:border-gray-700 rounded"
           >
             {editId === task.id ? (
               <div className="flex-1 flex gap-2">
