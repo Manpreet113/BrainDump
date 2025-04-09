@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import 'remixicon/fonts/remixicon.css';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
     --font-primary: 'DM Sans', sans-serif;
     --font-secondary: 'Raleway', sans-serif;
